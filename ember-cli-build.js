@@ -4,9 +4,9 @@ const EmberApp = require('ember-cli/lib/broccoli/ember-app');
 
 module.exports = function(defaults) {
   let app = new EmberApp(defaults, {
-    fingerprint: {
-     prepend: 'https://allthesignals.github.io/labs-upad-validate/',
-    },
+    // fingerprint: {
+    //  prepend: 'https://allthesignals.github.io/labs-upad-validate/',
+    // },
   });
 
   // Use `app.import` to add additional libraries to the generated
