@@ -44,7 +44,7 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-    ENV.rootURL = 'https://allthesignals.github.io/labs-upad-validate/';
+    ENV.rootURL = 'https://allthesignals.github.io/';
     // here you can enable a production-specific feature
   }
 
