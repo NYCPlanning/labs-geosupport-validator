@@ -1,5 +1,14 @@
 Drag and drag any number of txt files:
 
-<DropZone @action={{action this.handleFiles}}>
+<DropZone
+  @url='#'
+  @autoProcessQueue={{true}}
+  @uploadMultiple={{true}}
+  @addedfile={{action this.handleFile}}
+>
   drop items here...
 </DropZone>
+
+{{#each mismatches as |mismatch|}}
+  Problem with: {{mismatch.line}} <br/>
+{{/each}}
