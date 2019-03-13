@@ -1,0 +1,34 @@
+{{#if mismatches}}
+  <table class="ui celled table">
+    <thead>
+      <tr><th>Left</th>
+      <th>Right</th>
+      <th>Filename</th>
+      <th>Line</th>
+    </tr></thead>
+    <tbody>
+      {{#each mismatches as |mismatch|}}
+        {{log mismatch.line}}
+        <tr>
+          <td data-label="Left">
+            <h2 class="ui center aligned header">
+              {{mismatch.left}}
+            </h2>
+          </td>
+          <td data-label="Right">
+            <h2 class="ui center aligned header">
+              {{mismatch.right}}
+            </h2>
+          </td>
+          <td data-label="Filename">{{mismatch.name}}</td>
+          <td data-label="Line"><pre>{{mismatch.line}}</pre></td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+{{else}}
+  <h2 class="ui center aligned icon header">
+    <i class="circular level up alternate icon"></i>
+    Upload some files
+  </h2>
+{{/if}}
