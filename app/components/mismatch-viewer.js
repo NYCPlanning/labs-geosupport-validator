@@ -68,7 +68,7 @@ export default class MismatchViewerComponent extends Component {
     return this.upadFiles.lines
       .filter(({ left, right, line }) => {
         return left !== right // main test
-          && line.slice(0,4).match(/ [1-9a-z]{2}-/); // do the first few chars match this?
+          && line.slice(0,4).match(/ [1-9a-z]{2}-/i); // do the first few chars match this?
       })
       .uniqBy('line');
   }
