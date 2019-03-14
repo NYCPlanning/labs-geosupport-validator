@@ -1,15 +1,20 @@
 {{#if mismatches}}
   <table class="ui celled table">
     <thead>
-      <tr><th>Left</th>
+      <tr><th>Done?</th>
+      <th>Left</th>
       <th>Right</th>
       <th>Filename</th>
       <th>Line</th>
     </tr></thead>
     <tbody>
       {{#each mismatches as |mismatch|}}
-        {{log mismatch.line}}
         <tr>
+          <td data-label="Completed">
+            <h2 class="ui center aligned header">
+              {{ui-checkbox label=""}}
+            </h2>
+          </td>
           <td data-label="Left">
             <h2 class="ui center aligned header">
               {{mismatch.left}}
