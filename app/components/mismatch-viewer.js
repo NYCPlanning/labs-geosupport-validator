@@ -1,6 +1,7 @@
 import Component from '@ember/component';
 import { inject as service } from '@ember-decorators/service';
-import { computed } from '@ember-decorators/object'; 
+import { computed, action } from '@ember-decorators/object';
+import { alias } from '@ember-decorators/object/computed'; 
 
 const SAMPLE_DATA = [
   {
@@ -63,6 +64,11 @@ export default class MismatchViewerComponent extends Component {
   @service
   upadFiles;
 
+  @alias('upadFiles.lines')
+  lines;
+
+  allLinesOpen = false;
+
   @computed('upadFiles.lines.@each')
   get mismatches() {
     return this.upadFiles.lines
@@ -71,5 +77,10 @@ export default class MismatchViewerComponent extends Component {
           && line.slice(0,4).match(/ [1-9a-z]{2}-/i); // do the first few chars match this?
       })
       .uniqBy('line');
+  }
+
+  @action
+  toggleAccordion() {
+    this.toggleProperty('allLinesOpen');
   }
 }
