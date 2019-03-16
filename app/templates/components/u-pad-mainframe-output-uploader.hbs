@@ -1,10 +1,40 @@
-<DropZone
-  @url='#'
-  @autoProcessQueue={{true}}
-  @uploadMultiple={{true}}
-  @addedfile={{action this.handleFile}}
-  local-class="dropzone"
-  class="ui segment"/>
-
-
-
+<FileDropzone
+  @name="files"
+  class="ui placeholder segment"
+  as |dropzone|
+>
+  <div class="ui two column stackable center aligned grid">
+    <div class="middle aligned row">
+      <div class="column">
+        <div class="ui icon header">
+          <i class="cloud upload icon"></i>
+          {{#if upadFiles.files.length}}
+            Drag and drop more files
+          {{else}}
+            Drag and drop files to get started
+          {{/if}}
+        </div>
+        <FileUpload @name="files"
+                    @for="upload-files"
+                    @multiple={{true}}
+                    @onfileadd={{action this.handleFile}}
+                    class="ui primary button"
+        >
+          Add Document(s)
+        </FileUpload>
+      </div>
+      {{#if upadFiles.files.length}}
+        <div class="ui vertical divider">Or</div>
+        <div class="column">
+          <div class="ui icon header">
+            <i class="cloud download icon"></i>
+            {{upadFiles.files.length}} files uploaded
+          </div>
+          <div class="ui primary button" {{action this.downloadFiles}}>
+            Download Formatted Files
+          </div>
+        </div>
+      {{/if}}
+    </div>
+  </div>
+</FileDropzone>

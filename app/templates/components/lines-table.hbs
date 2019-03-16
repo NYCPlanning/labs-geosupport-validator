@@ -25,7 +25,11 @@
           </h2>
         </td>
         <td data-label="Filename">{{line.name}}</td>
-        <td data-label="Line"><pre>{{line.line}}</pre></td>
+        <td data-label="Line">
+          <div local-class="line-viewer">
+            {{line.line}}
+          </div>
+        </td>
       </tr>
     {{/each}}
   </tbody>

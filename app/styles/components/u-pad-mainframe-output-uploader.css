@@ -1,3 +1,7 @@
 .dropzone {
-  width: 100%;
+  display: none;
+}
+
+.is-drag-hovering {
+  background-color: red;
 }

@@ -14,18 +14,26 @@ const patterns = [{
 const flatten = (array) => array.reduce((acc, curr) => acc.concat(curr), []);
 
 export default class UpadFilesService extends Service {
+  files = [];
   lines = [];
 
   add(file) {
     const reader = new FileReader();
-
     reader.onload = (event) => {
-      const { name } = file;
+      const { name: rawName } = file;
+      const extractedName = (rawName.match(/[^(]+(?=\))/) || [])[0];
+      const name = `${extractedName}.txt`;
 
       // sniff out the file type for correct slicing pattern
       const { length } = patterns
         .find(({ fileNameMatcher }) => name.includes(fileNameMatcher));
       const fileText = event.target.result;
+
+      // push up the file
+      this.files.pushObject({
+        name,
+        content: fileText,
+      });
 
       // split along the folds
       const folds = flatten(

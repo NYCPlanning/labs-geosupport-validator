@@ -1,22 +1,9 @@
-{{#if mismatches}}
-  <LinesTable @lines={{mismatches}}/>
+<div class="ui stackable one column padded grid">
+  <div class="row">
+    {{#if mismatches}}
+      <LinesTable @lines={{mismatches}} class="row"/>
+    {{/if}}
+  </div>
 
-  <UiAccordion>
-    <div class="title" {{action 'toggleAccordion'}}>
-      <i class="dropdown icon"></i>
-      All Lines
-    </div>
-    <div class="content">
-      {{#if allLinesOpen}} 
-        {{#each lines as |line|}}
-          <pre>{{line.line}}</pre><br/>
-        {{/each}}
-      {{/if}}
-    </div>
-  </UiAccordion>
-{{else}}
-  <h2 class="ui center aligned icon header">
-    <i class="circular level up alternate icon"></i>
-    Upload some files
-  </h2>
-{{/if}}
+  <UPadMainframeOutputUploader class="row"/>
+</div>
