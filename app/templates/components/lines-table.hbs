@@ -4,6 +4,8 @@
     <th>Left</th>
     <th>Right</th>
     <th>Filename</th>
+    <th>Date</th>
+    <th>Header</th>
     <th>Line</th>
   </tr></thead>
   <tbody>
@@ -25,9 +27,11 @@
           </h2>
         </td>
         <td data-label="Filename">{{line.name}}</td>
+        <td data-label="Date">{{line.date}}</td>
+        <td data-label="Header">{{line.currentHeader}}</td>
         <td data-label="Line">
           <div local-class="line-viewer">
-            {{line.line}}
+            <pre>{{truncate line.line 65}}...</pre>
           </div>
         </td>
       </tr>

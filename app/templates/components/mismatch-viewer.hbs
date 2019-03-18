@@ -1,9 +1,8 @@
 <div class="ui stackable one column padded grid">
+  <UPadMainframeOutputUploader class="row"/>
   <div class="row">
     {{#if mismatches}}
       <LinesTable @lines={{mismatches}} class="row"/>
     {{/if}}
   </div>
-
-  <UPadMainframeOutputUploader class="row"/>
 </div>

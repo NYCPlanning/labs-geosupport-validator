@@ -35,20 +35,39 @@ export default class UpadFilesService extends Service {
         content: fileText,
       });
 
+      const date = fileText.split('\n')[2].slice(36,47);
+
       // split along the folds
       const folds = flatten(
         fileText.split(FOLD).slice(1)
       );
 
       // split along lines
-      const lines = flatten(folds.map(pagelike => pagelike.split('\n')))
+      const lines = flatten(
+        folds.map(pagelike => pagelike.split('\n'))
+      );
 
+      let currentHeader = '';
       // slice up the lines based on static patterns
       lines.forEach((line = '') => {
+        const isHeader = line.includes(' GBAT ');
+
+        if (isHeader) {
+          currentHeader = line;
+        }
+
         const left = line.slice(1,3);
         const right = line.slice(length, length + 2);
 
-        this.lines.pushObject({ left, right, line, name });
+        this.lines.pushObject({
+          currentHeader,
+          date,
+          left,
+          right,
+          line,
+          name,
+          id: `${line} ${currentHeader}`,
+        });
       });
     };
 
