@@ -1,4 +1,3 @@
 .line-viewer {
-  max-width: 100%;
-  overflow: scroll;
+  margin: 0;
 }
