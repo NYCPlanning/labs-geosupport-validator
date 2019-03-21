@@ -1,3 +1,7 @@
 .line-viewer {
   margin: 0;
 }
+
+.line-cell {
+  border-top: none !important;
+}

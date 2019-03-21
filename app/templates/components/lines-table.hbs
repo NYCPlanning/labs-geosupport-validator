@@ -1,4 +1,4 @@
-<table class="ui celled structured table">
+<table class="ui very basic striped table">
   <thead>
     <tr><th>Done?</th>
     <th>Left</th>
@@ -29,8 +29,8 @@
         <td data-label="Date">{{line.date}}</td>
         <td data-label="Header">{{line.currentHeader}}</td>
       </tr>
-      <tr>
-        <td colspan="5">
+      <tr local-class="line-cell">
+        <td colspan="5" local-class="line-cell">
           {{!-- <div local-class="line-viewer"> --}}
             <pre local-class="line-viewer">{{line.line}}</pre>
           {{!-- </div> --}}
