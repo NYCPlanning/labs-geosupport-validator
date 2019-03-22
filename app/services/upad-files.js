@@ -35,7 +35,7 @@ export default class UpadFilesService extends Service {
         content: fileText,
       });
 
-      const date = fileText.split('\n')[2].slice(36,47);
+      const date = fileText.split('\n')[2].slice(35,47);
 
       // split along the folds
       const folds = flatten(
