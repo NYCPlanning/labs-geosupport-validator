@@ -1,15 +1,25 @@
 import Service from '@ember/service';
 
 const FOLD = 'ERROR RECORDS: ';
+const boroCodeLookup = {
+  '1': 'Manhattan',
+  '2': 'Bronx',
+  '3': 'Brooklyn',
+  '4': 'Queens',
+  '5': 'Staten Island',
+};
 const patterns = [{
   fileNameMatcher: 'BL',
   length: 56,
+  boroCodeLength: 13,
 }, {
   fileNameMatcher: '1A',
   length: 62,
+  boroCodeLength: 13,
 }, {
   fileNameMatcher: 'BN',
   length: 42,
+  boroCodeLength: 17,
 }];
 const flatten = (array) => array.reduce((acc, curr) => acc.concat(curr), []);
 
@@ -25,7 +35,7 @@ export default class UpadFilesService extends Service {
       const name = `${extractedName}.txt`;
 
       // sniff out the file type for correct slicing pattern
-      const { length } = patterns
+      const { length, boroCodeLength, fileNameMatcher } = patterns
         .find(({ fileNameMatcher }) => name.includes(fileNameMatcher));
       const fileText = event.target.result;
 
@@ -58,6 +68,7 @@ export default class UpadFilesService extends Service {
 
         const left = line.slice(1,3);
         const right = line.slice(length, length + 2);
+        const boroCode = line.slice(boroCodeLength, boroCodeLength + 1);
 
         this.lines.pushObject({
           currentHeader,
@@ -66,6 +77,8 @@ export default class UpadFilesService extends Service {
           right,
           line,
           name,
+          fileType: fileNameMatcher,
+          boroName: boroCodeLookup[boroCode],
           id: `${line} ${currentHeader}`,
         });
       });
