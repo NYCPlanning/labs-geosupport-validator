@@ -3,32 +3,32 @@
     <tr>
       <th>Done?</th>
       <th {{action this.changeSorting 'left'}}
-        class="{{if (eq sortByKey 'left') 'sorted ascending'}}"
+        class="{{if (eq sortByKey 'left') (if ascending 'sorted ascending' 'sorted descending')}}"
       >
         Left
       </th>
       <th {{action this.changeSorting 'right'}}
-        class="{{if (eq sortByKey 'right') 'sorted ascending'}}"
+        class="{{if (eq sortByKey 'right') (if ascending 'sorted ascending' 'sorted descending')}}"
       >
         Right
       </th>
       <th {{action this.changeSorting 'boroName'}}
-        class="{{if (eq sortByKey 'boroName') 'sorted ascending'}}"
+        class="{{if (eq sortByKey 'boroName') (if ascending 'sorted ascending' 'sorted descending')}}"
       >
         Boro Code
       </th>
       <th {{action this.changeSorting 'pattern.fileNameMatcher'}}
-        class="{{if (eq sortByKey 'pattern.fileNameMatcher') 'sorted ascending'}}"
+        class="{{if (eq sortByKey 'pattern.fileNameMatcher') (if ascending 'sorted ascending' 'sorted descending')}}"
       >
         File Type
       </th>
       <th {{action this.changeSorting 'date'}}
-        class="{{if (eq sortByKey 'date') 'sorted ascending'}}"
+        class="{{if (eq sortByKey 'date') (if ascending 'sorted ascending' 'sorted descending')}}"
       >
         Date
       </th>
       <th {{action this.changeSorting 'currentHeader'}}
-        class="{{if (eq sortByKey 'currentHeader') 'sorted ascending'}}"
+        class="{{if (eq sortByKey 'currentHeader') (if ascending 'sorted ascending' 'sorted descending')}}"
       >
         Header
       </th>

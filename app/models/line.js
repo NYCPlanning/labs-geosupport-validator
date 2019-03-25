@@ -101,7 +101,7 @@ export default class Line {
     }
 
     if (this.fileNameMatcher === 'BN') {
-      // this a manual note, may not work
+      // this a manual note added in QA process, may not work
       const fuzzyAddress = this.line.split('/').reverse()[0];
 
       return fetch(`${GEOSEARCH_URL}${fuzzyAddress}`)
