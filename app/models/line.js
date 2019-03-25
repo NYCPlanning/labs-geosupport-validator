@@ -3,11 +3,11 @@ import { computed } from '@ember-decorators/object';
 import fetch from 'fetch';  
 
 const boroCodeLookup = {
-  '1': 'Manhattan',
-  '2': 'Bronx',
-  '3': 'Brooklyn',
-  '4': 'Queens',
-  '5': 'Staten Island',
+  '1': 'MN',
+  '2': 'BX',
+  '3': 'BK',
+  '4': 'QN',
+  '5': 'SI',
 };
 const patterns = [{
   fileNameMatcher: 'BL',
