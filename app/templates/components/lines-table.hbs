@@ -17,8 +17,8 @@
       >
         Boro Code
       </th>
-      <th {{action this.changeSorting 'fileType'}}
-        class="{{if (eq sortByKey 'fileType') 'sorted ascending'}}"
+      <th {{action this.changeSorting 'pattern.fileNameMatcher'}}
+        class="{{if (eq sortByKey 'pattern.fileNameMatcher') 'sorted ascending'}}"
       >
         File Type
       </th>
@@ -31,6 +31,9 @@
         class="{{if (eq sortByKey 'currentHeader') 'sorted ascending'}}"
       >
         Header
+      </th>
+      <th>
+        Found Links
       </th>
     </tr>
   </thead>
@@ -59,15 +62,34 @@
         </td>
         <td data-label="Filename">
           <h2 class="ui header">
-            {{line.fileType}} 
+            {{line.pattern.fileNameMatcher}} 
             <div class="sub header">{{line.name}}</div>
           </h2>
         </td>
         <td data-label="Date">{{line.date}}</td>
         <td data-label="Header">{{line.currentHeader}}</td>
+        <td data-label="Found Links">
+          {{#if (eq line.fileNameMatcher '1A')}}
+            <a href="http://a030-goat.nyc.gov/goat/Default.aspx?boro={{line.boroCode}}&addressNumber={{line.location.addressNumber}}&street={{line.location.street}}" target="_blank" role="button" class="ui neutral button">
+              Try GOAT
+              &nbsp; <i class="icon external alternate"></i>
+            </a>
+          {{/if}}
+
+          {{#if (eq line.fileNameMatcher 'BN')}}
+            {{#if (await line.location)}}
+              {{#let (await line.location) as |properties|}}
+                <a href="http://a030-goat.nyc.gov/goat/Default.aspx?boro={{line.boroCode}}&addressNumber={{properties.addressNumber}}&street={{properties.street}}" target="_blank" role="button" class="ui neutral button">
+                  Try GOAT
+                  &nbsp; <i class="icon external alternate"></i>
+                </a>
+              {{/let}}
+            {{/if}}
+          {{/if}}
+        </td>
       </tr>
       <tr local-class="line-cell">
-        <td colspan="6" class="disabled" local-class="line-cell">
+        <td colspan="7" class="disabled" local-class="line-cell">
           <pre local-class="line-viewer">{{line.line}}</pre>
         </td>
       </tr>
