@@ -33,7 +33,7 @@
         Header
       </th>
       <th>
-        Found Links
+        GOAT
       </th>
     </tr>
   </thead>
@@ -70,8 +70,16 @@
         <td data-label="Header">{{line.currentHeader}}</td>
         <td data-label="Found Links">
           {{#if (eq line.fileNameMatcher '1A')}}
-            <a href="http://a030-goat.nyc.gov/goat/Default.aspx?boro={{line.boroCode}}&addressNumber={{line.location.addressNumber}}&street={{line.location.street}}" target="_blank" role="button" class="ui neutral button">
-              Try GOAT
+            <a href="http://a030-goat.nyc.gov/goat/Default.aspx?boro={{line.boroCode}}&addressNumber={{line.location.addressNumber}}&street={{line.location.street}}" target="_blank" role="button"
+              class="ui neutral tiny left attached button"
+            >
+              Prod
+              &nbsp; <i class="icon external alternate"></i>
+            </a>
+            <a href="http://a030-goat.ecm.csstg.cs.nycnet/goat/Default.aspx?boro={{line.boroCode}}&addressNumber={{line.location.addressNumber}}&street={{line.location.street}}" target="_blank" role="button"
+              class="ui neutral tiny right attached button"
+            >
+              Staging
               &nbsp; <i class="icon external alternate"></i>
             </a>
           {{/if}}
@@ -79,8 +87,16 @@
           {{#if (eq line.fileNameMatcher 'BN')}}
             {{#if (await line.location)}}
               {{#let (await line.location) as |properties|}}
-                <a href="http://a030-goat.nyc.gov/goat/Default.aspx?boro={{line.boroCode}}&addressNumber={{properties.addressNumber}}&street={{properties.street}}" target="_blank" role="button" class="ui neutral button">
-                  Try GOAT
+                <a href="http://a030-goat.nyc.gov/goat/Default.aspx?boro={{line.boroCode}}&addressNumber={{properties.addressNumber}}&street={{properties.street}}" target="_blank" role="button"
+                  class="ui neutral tiny left attached button"
+                >
+                  Prod
+                  &nbsp; <i class="icon external alternate"></i>
+                </a>
+                <a href="http://a030-goat.ecm.csstg.cs.nycnet/goat/Default.aspx?boro={{line.boroCode}}&addressNumber={{properties.addressNumber}}&street={{properties.street}}" target="_blank" role="button"
+                  class="ui neutral tiny right attached button"
+                >
+                  Staging
                   &nbsp; <i class="icon external alternate"></i>
                 </a>
               {{/let}}

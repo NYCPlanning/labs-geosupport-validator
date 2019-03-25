@@ -15,7 +15,7 @@ export default class LinesTableComponent extends Component {
       lines.reverse();
     }
 
-    return lines
+    return lines;
   }
 
   @action
