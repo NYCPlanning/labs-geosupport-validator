@@ -15,11 +15,12 @@ export default class UpadFilesService extends Service {
 
     reader.onload = (event) => {
       const { name: rawName } = file;
-      const extractedName = (rawName.match(/[^(]+(?=\))/) || [])[0];
+      // match things inside parens OR just use the raw name
+      const extractedName = (rawName.match(/[^(]+(?=\))/) || [])[0] || rawName;
       const name = `${extractedName}.txt`;
       const fileText = event.target.result;
 
-      // push up the file
+      // push in the file
       this.files.pushObject({
         name,
         content: fileText,
